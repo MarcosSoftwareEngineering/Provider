@@ -36,7 +36,8 @@ The system was built with a focus on **Mobile-First** design, providing an "App-
 
 ## 📱 How to Use
 
-1.  **Access the Live Version:** [Click here to view the App](https://marcossoftwareengineering.github.io/Provider/) *(Update link if necessary)*
+
+1.  **Access the Live Version:** [Click here to view the App](https://provider-silk.vercel.app/) *(Update link if necessary)*
 2.  **Interact with Cards:** Click on the main dashboard cards (Fibra, Móvel, Pay, Seguros) to open detailed modals.
 3.  **Navigate:** Use the bottom navigation bar to switch between "Pra você", "Assinaturas", "Loja", "Benefícios", and "Pay".
 4.  **Open Sidebar:** Click the Hamburger Menu icon (top right) to access billing (Central de faturas) and Open Finance options.
