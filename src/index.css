@@ -1,4 +1,4 @@
-/* Layout Principal */
+/* Main Layout */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   width: 100%;
   background-color: white;
   box-shadow: 0 0 40px rgba(0,0,0,0.05);
-  position: relative; /* Necessário para o modal */
+  position: relative; /* Necessary for modal positioning */
 }
 
 /* Header */
@@ -59,7 +59,7 @@
   cursor: pointer;
 }
 
-/* Conteúdo Principal */
+/* Main Content */
 .main-content {
   flex: 1;
   padding: 24px 20px;
@@ -79,7 +79,7 @@
   margin-bottom: 32px;
 }
 
-/* Botões */
+/* Buttons */
 .buttons-container {
   display: flex;
   align-items: center;
@@ -118,7 +118,7 @@
   text-decoration: underline;
 }
 
-/* Carrossel e Cards */
+/* Carousel and Cards */
 .carousel {
   display: flex;
   gap: 20px;
@@ -204,7 +204,7 @@
   opacity: 0.9;
 }
 
-/* Menu Inferior */
+/* Bottom Navigation */
 .bottom-nav {
   display: flex;
   justify-content: space-between;
@@ -222,11 +222,11 @@
   align-items: center;
   gap: 6px;
   color: #9ca3af;
-  cursor: pointer; /* Adicionado o ponteiro de clique */
+  cursor: pointer; /* Added click pointer */
   transition: color 0.2s, transform 0.1s;
 }
 
-/* Efeito ao clicar no ícone */
+/* Effect when clicking navigation items */
 .nav-item:active {
   transform: scale(0.95);
 }
@@ -260,7 +260,7 @@
 }
 
 /* ========================================= */
-/* ESTILOS DO MODAL */
+/* MODAL STYLES */
 /* ========================================= */
 
 .modal-overlay {
@@ -270,7 +270,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px); /* Desfoca o fundo da tela */
+  backdrop-filter: blur(4px); /* Blurs the background screen */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -348,7 +348,7 @@
   .bottom-nav { justify-content: center; gap: 10%; }
 }
 
-/* Desktops e Laptops */
+/* Desktops and Laptops */
 @media (min-width: 1024px) {
   .app-container {
     border-radius: 16px;
