@@ -8,38 +8,44 @@ import './App.css';
 import minhaFoto from './assets/perfil.jpg'; 
 
 export default function App() {
+  // State to manage which modal is currently open
   const [modalAberto, setModalAberto] = useState(null);
+  // State to manage the visibility of the side drawer menu
   const [menuLateralAberto, setMenuLateralAberto] = useState(false); 
   
-  // NOVO ESTADO: Guarda o texto que está sendo digitado
+  // NEW STATE: Stores the text being typed by the effect
   const [textoDigitado, setTextoDigitado] = useState('');
 
-  // NOVO EFEITO: Máquina de Escrever
+  // NEW EFFECT: Typewriter animation logic
   useEffect(() => {
     const textoOriginal = "Você tem (1) oferta liberada:";
     let i = 0;
     
-    // Inicia um temporizador que roda a cada 50 milissegundos
+    // Starts a timer that runs every 50 milliseconds
     const interval = setInterval(() => {
       if (i < textoOriginal.length) {
         setTextoDigitado(textoOriginal.slice(0, i + 1));
         i++;
       } else {
-        clearInterval(interval); // Para o timer quando terminar
+        clearInterval(interval); // Stops the timer when finished
       }
-    }, 50); // <-- Você pode mudar a velocidade aqui (50ms é um bom padrão)
+    }, 50); // <-- Speed can be adjusted here (50ms is a standard speed)
 
-    return () => clearInterval(interval); // Limpeza de segurança do React
+    return () => clearInterval(interval); // Safety cleanup for React component unmounting
   }, []);
 
+  // Function to open a specific modal by name
   const abrirModal = (nomeDoMenu) => setModalAberto(nomeDoMenu);
+  // Function to close any open modal
   const fecharModal = () => setModalAberto(null);
 
+  // Function to close the sidebar before opening a specific modal
   const abrirModalDoMenuLateral = (nome) => {
     setMenuLateralAberto(false);
     abrirModal(nome);
   };
 
+  // Helper function to render different UI content based on the open modal name
   const renderConteudoModal = () => {
     switch (modalAberto) {
       case 'Detalhes Fibra':
@@ -328,7 +334,7 @@ export default function App() {
   return (
     <div className="app-container">
       
-      {/* Cabeçalho */}
+      {/* Header section with profile photo and action icons */}
       <header className="header">
         <div className="profile-icon cursor-pointer" onClick={() => abrirModal('Meu Perfil')}>
           <img src={minhaFoto} alt="Marcos Vinicius" className="foto-perfil-img" />
@@ -350,9 +356,9 @@ export default function App() {
         </div>
       </header>
 
-      {/* Conteúdo Principal */}
+      {/* Main UI Content */}
       <main className="main-content">
-        {/* AQUI ESTÁ A MÁGICA: O texto digitado e o cursor! */}
+        {/* Animated typewriter title and subtitle */}
         <h1 className="title typing-cursor">{textoDigitado}</h1>
         <p className="subtitle">Fibra 600 Mega por apenas R$ 100/mês</p>
 
@@ -361,7 +367,7 @@ export default function App() {
           <button className="btn-secondary" onClick={() => abrirModal('Ocultar notificação')}>Ocultar notificação</button>
         </div>
 
-        {/* Carrossel de Cards */}
+        {/* Carousel containing different offer cards */}
         <div className="carousel">
           <div className="card bg-purple cursor-pointer" onClick={() => abrirModal('Detalhes Fibra')}>
             <div className="card-header">
@@ -409,7 +415,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* Menu Inferior */}
+      {/* Bottom Navigation Bar */}
       <nav className="bottom-nav">
         <div className="nav-item active" onClick={() => abrirModal('Pra você')}>
           <Home size={22} />
@@ -436,7 +442,7 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Modal Centralizado */}
+      {/* Main Modal Overlay (Shared for all pop-ups) */}
       {modalAberto !== null && (
         <div className="modal-overlay" onClick={fecharModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -453,9 +459,10 @@ export default function App() {
         </div>
       )}
 
-      {/* Sidebar Lateral */}
+      {/* Side Menu (Sidebar) Implementation */}
       {menuLateralAberto && (
         <>
+          {/* Dark background overlay behind the sidebar */}
           <div className="sidebar-overlay" onClick={() => setMenuLateralAberto(false)}></div>
           <div className="sidebar-menu">
             <header className="header menu-header-lateral">
